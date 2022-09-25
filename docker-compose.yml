@@ -1,0 +1,32 @@
+version: "3.3"
+   
+services:
+  db:
+    image: mariadb:10.9
+    ports:
+      - 25349:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: b9020d86-be8c-4648-8784-d71450aea5ad
+      MARIADB_DATABASE: heartbeat2_back_local
+      TZ: Asia/Seoul
+    networks:
+      - django_actions
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/workspace
+    ports:
+      - "8889:8000"
+    depends_on:
+      - db
+    networks:
+      - django_actions
+    environment:
+      - PYTHONDONTWRITEBYTECODE='1'
+networks:
+  django_actions:
+volumes:
+    db_data:
