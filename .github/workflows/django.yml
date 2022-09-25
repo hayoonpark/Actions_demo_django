@@ -41,4 +41,5 @@ jobs:
     - name: Run Deploy
       run: |
         pip install django
+        pip isntall djangorestframework
         python3 manage.py runserver
