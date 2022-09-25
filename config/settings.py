@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'actions_demo',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', # mysqlclient librarly 설치
+        'NAME': 'heartbeat2_back_local',
+        'USER': 'root',
+        'PASSWORD': 'b9020d86-be8c-4648-8784-d71450aea5ad', # mariaDB 설치 시 입력한 root 비밀번호 입력
+        'HOST': '127.0.0.1',
+        'PORT': '25349'
     }
 }
 
