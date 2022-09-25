@@ -8,8 +8,8 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MARIADB_ROOT_PASSWORD: b9020d86-be8c-4648-8784-d71450aea5ad
-      MARIADB_DATABASE: heartbeat2_back_local
+      MARIADB_ROOT_PASSWORD: actions-demo
+      MARIADB_DATABASE: actions_db
       TZ: Asia/Seoul
     networks:
       - django_actions
