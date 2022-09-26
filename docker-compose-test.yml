@@ -25,6 +25,6 @@ services:
         condition: service_healthy
     networks:
       - django_actions
-    env_file: env/.local.env
+    # env_file: env/.local.env
 networks:
   django_actions:
