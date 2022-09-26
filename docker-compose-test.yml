@@ -16,8 +16,9 @@ services:
       timeout: 5s
       retries: 24
   web:
+    needs: test
     build: .
-    command: python manage.py makemigrations && python manage.py migration python manage.py test
+    command: python manage.py test
     volumes:
       - .:/workspace
     depends_on:
