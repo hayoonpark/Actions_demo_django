@@ -1,0 +1,30 @@
+version: "3.9"
+   
+services:
+  db:
+    image: mariadb:10.9.2
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: actions-demo
+      MARIADB_DATABASE: actions_db
+      TZ: Asia/Seoul
+    networks:
+      - django_actions
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 24
+  web:
+    build: .
+    command: python manage.py test
+    volumes:
+      - .:/workspace
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - django_actions:
+    env_file: env/.local.env
+networks:
+  django_actions:
