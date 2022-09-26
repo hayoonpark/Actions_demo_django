@@ -9,7 +9,7 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MARIADB_ROOT_PASSWORD: actions-demo
-      MARIADB_DATABASE: actions_db
+      MARIADB_DATABASE: django_actions_local
       TZ: Asia/Seoul
     networks:
       - django_actions

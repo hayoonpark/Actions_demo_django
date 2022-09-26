@@ -24,7 +24,7 @@ services:
       db:
         condition: service_healthy
     networks:
-      - django_actions:
+      - django_actions
     env_file: env/.local.env
 networks:
   django_actions:
