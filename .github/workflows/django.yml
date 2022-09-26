@@ -23,9 +23,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Run Tests
       run: |
-        pip install django
-        pip isntall djangorestframework
-        python manage.py test
+        docker-compose -f docker-compose.yml up
   
   deploy:
     runs-on: ubuntu-latest
@@ -42,6 +40,5 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Run Deploy
       run: |
-        pip install django
-        pip isntall djangorestframework
-        python3 manage.py runserver
+        docker-compose -f docker-compose.yml up
+
